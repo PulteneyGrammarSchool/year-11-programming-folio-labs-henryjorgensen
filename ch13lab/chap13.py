@@ -155,8 +155,6 @@ while not done:
     for event in pygame.event.get(): 
         if event.type == pygame.QUIT: 
             done = True
-        elif event.type ==  pygame.sprite.spritecollide(player, good_block_list, True):
-            good_sound.play()
 # Set the speed based on the key pressed
         elif event.type == pygame.KEYDOWN:
             if event.key == pygame.K_LEFT:
@@ -205,10 +203,12 @@ while not done:
     for good_block in good_blocks_hit_list:
         score += 1
         print(score)
+        good_sound.play()
         
     for bad_block in bad_blocks_hit_list:
         score -= 1
-        print(score)        
+        print(score)
+        bad_sound.play()
      
         # Reset block to the top of the screen to fall again.
         block.reset_pos()    
